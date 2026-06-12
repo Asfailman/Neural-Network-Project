@@ -7,11 +7,11 @@ from src.model import create_mlp_model
 # Constants
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
 REPORTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reports", "figures")
-MODEL_PATH = os.path.join(MODELS_DIR, "diabetes_mlp_model.keras")
+MODEL_PATH = os.path.join(MODELS_DIR, "cardiac_mlp_model.keras")
 
 def train_model(epochs=100, batch_size=32, layers=[64, 32], dropout_rate=0.2, learning_rate=0.001):
     """
-    Trains the MLP model for Diabetes Risk Prediction.
+    Trains the MLP model for Cardiac Risk Stratification.
     
     1. Loads preprocessed datasets.
     2. Builds the MLP network.

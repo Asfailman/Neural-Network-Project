@@ -46,5 +46,5 @@ def create_mlp_model(input_dim, layers=[64, 32], dropout_rate=0.2, learning_rate
 
 if __name__ == "__main__":
     # Test model creation
-    model = create_mlp_model(input_dim=8)
+    model = create_mlp_model(input_dim=11)
     model.summary()

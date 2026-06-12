@@ -5,7 +5,7 @@ import tensorflow as tf
 
 # Constants
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
-MODEL_PATH = os.path.join(MODELS_DIR, "diabetes_mlp_model.keras")
+MODEL_PATH = os.path.join(MODELS_DIR, "cardiac_mlp_model.keras")
 SCALER_PATH = os.path.join(MODELS_DIR, "scaler.pkl")
 
 def predict_single_patient(features, model, scaler):
@@ -67,7 +67,7 @@ def get_float_input(prompt, min_val=0.0, max_val=1000.0, default=None):
 def run_interactive_cli():
     """Runs a terminal-based interactive CLI loop for custom risk prediction."""
     print("\n" + "="*50)
-    print("      DIABETES RISK PREDICTION - MLP INFERENCE CLI      ")
+    print("     CARDIAC RISK STRATIFICATION - MLP INFERENCE CLI    ")
     print("="*50)
     
     try:
@@ -78,14 +78,17 @@ def run_interactive_cli():
         return
         
     features_info = [
-        ("Pregnancies", "Number of pregnancies", 0, 20, 0),
-        ("Glucose", "Plasma glucose concentration (2 hours in an oral glucose tolerance test) [mg/dL]", 30, 300, 110),
-        ("BloodPressure", "Diastolic blood pressure [mm Hg]", 30, 150, 70),
-        ("SkinThickness", "Triceps skin fold thickness [mm]", 5, 100, 20),
-        ("Insulin", "2-Hour serum insulin [mu U/ml]", 10, 800, 80),
-        ("BMI", "Body Mass Index (weight in kg / (height in m)^2)", 10.0, 60.0, 25.0),
-        ("DiabetesPedigreeFunction", "Diabetes pedigree genetic factor (0.0 to 2.5)", 0.05, 2.5, 0.47),
-        ("Age", "Age (years)", 18, 100, 30)
+        ("Age", "Age (years)", 1, 120, 54),
+        ("Sex", "Sex (1 = Male, 0 = Female)", 0, 1, 1),
+        ("Chest Pain Type", "Chest pain type [0: typical, 1: atypical, 2: non-anginal, 3: asymptomatic]", 0, 3, 1),
+        ("Resting BP", "Resting blood pressure [mm Hg]", 50, 250, 130),
+        ("Cholesterol", "Serum cholesterol [mg/dL]", 80, 600, 240),
+        ("Fasting Blood Sugar", "Fasting blood sugar > 120 mg/dL (1 = True, 0 = False)", 0, 1, 0),
+        ("Resting ECG", "Resting electrocardiographic results [0, 1, 2]", 0, 2, 1),
+        ("Max Heart Rate", "Maximum heart rate achieved", 50, 220, 150),
+        ("Exercise Angina", "Exercise induced angina (1 = Yes, 0 = No)", 0, 1, 0),
+        ("Oldpeak", "ST depression induced by exercise relative to rest", 0.0, 10.0, 1.0),
+        ("ST Slope", "Slope of peak exercise ST segment [0, 1, 2]", 0, 2, 1)
     ]
     
     while True:
@@ -126,12 +129,12 @@ def run_interactive_cli():
         print("\n" + "-"*40)
         print("          PREDICTION RESULT          ")
         print("-"*40)
-        risk_label = "HIGH RISK (DIABETIC)" if pred == 1 else "LOW RISK (NON-DIABETIC)"
+        risk_label = "HIGH RISK (CARDIAC RISK)" if pred == 1 else "LOW RISK (NORMAL)"
         color_code = "\033[91m" if pred == 1 else "\033[92m"
         reset_code = "\033[0m"
         
-        print(f"Probability of Diabetes: {prob * 100:.2f}%")
-        print(f"Risk Classification:    {color_code}{risk_label}{reset_code}")
+        print(f"Probability of Cardiac Risk: {prob * 100:.2f}%")
+        print(f"Risk Classification:        {color_code}{risk_label}{reset_code}")
         
         if pred == 1:
             print("\nAdvice: The patient exhibits a high clinical risk profile. Further diagnosis and lifestyle modifications are recommended.")

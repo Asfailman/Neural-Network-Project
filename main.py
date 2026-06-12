@@ -7,7 +7,7 @@ from src.predict import run_interactive_cli
 def run_pipeline():
     """Orchestrates the entire CRISP-DM Machine Learning pipeline."""
     print("="*60)
-    print("     DIABETES RISK PREDICTION - MLP END-TO-END PIPELINE     ")
+    print("     CARDIAC RISK STRATIFICATION - MLP END-TO-END PIPELINE     ")
     print("="*60)
     
     # 1 & 2. Data Understanding, Preparation & Training (CRISP-DM Phases 2, 3, 4)
@@ -29,7 +29,7 @@ def run_pipeline():
     print("Run prediction CLI with: python main.py --predict")
 
 def main():
-    parser = argparse.ArgumentParser(description="Diabetes Risk Prediction using MLP Pipeline")
+    parser = argparse.ArgumentParser(description="Cardiac Risk Stratification using MLP Pipeline")
     parser.add_argument(
         "--predict", 
         action="store_true", 

@@ -1,26 +1,26 @@
 ==================================================
-DIABETES RISK PREDICTION - MLP EVALUATION REPORT
+CARDIAC RISK STRATIFICATION - MLP EVALUATION REPORT
 ==================================================
 
-Accuracy:    0.8534
-Precision:   0.8750
-Recall:      0.6829 (Sensitivity)
-Specificity: 0.9467
-F1-Score:    0.7671
-AUC-ROC:     0.9333
+Accuracy:    0.9545
+Precision:   0.9737
+Recall:      0.9367 (Sensitivity)
+Specificity: 0.9733
+F1-Score:    0.9548
+AUC-ROC:     0.9887
 
 Confusion Matrix counts:
- - True Negatives (TN):  71
- - False Positives (FP): 4
- - False Negatives (FN): 13
- - True Positives (TP):  28
+ - True Negatives (TN):  73
+ - False Positives (FP): 2
+ - False Negatives (FN): 5
+ - True Positives (TP):  74
 
 Classification Report Details:
-              precision    recall  f1-score   support
+               precision    recall  f1-score   support
 
-Non-Diabetic       0.85      0.95      0.89        75
-    Diabetic       0.88      0.68      0.77        41
+   No Disease       0.94      0.97      0.95        75
+Heart Disease       0.97      0.94      0.95        79
 
-    accuracy                           0.85       116
-   macro avg       0.86      0.81      0.83       116
-weighted avg       0.86      0.85      0.85       116
+     accuracy                           0.95       154
+    macro avg       0.95      0.96      0.95       154
+ weighted avg       0.96      0.95      0.95       154

@@ -13,13 +13,13 @@ from src.dataset import load_and_prepare_data
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
 REPORTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reports")
 FIGURES_DIR = os.path.join(REPORTS_DIR, "figures")
-MODEL_PATH = os.path.join(MODELS_DIR, "diabetes_mlp_model.keras")
+MODEL_PATH = os.path.join(MODELS_DIR, "cardiac_mlp_model.keras")
 
 os.makedirs(FIGURES_DIR, exist_ok=True)
 
 def evaluate_model(model_path=MODEL_PATH, test_data=None):
     """
-    Evaluates the trained MLP model on the test dataset.
+    Evaluates the trained MLP model on the test dataset for Cardiac Risk Stratification.
     
     1. Loads the saved model.
     2. Runs predictions on the test set.
@@ -67,14 +67,14 @@ def evaluate_model(model_path=MODEL_PATH, test_data=None):
     print(f"AUC-ROC:     {roc_auc:.4f}")
     
     # Detailed classification report
-    class_report = classification_report(y_test, y_pred, target_names=["Non-Diabetic", "Diabetic"])
+    class_report = classification_report(y_test, y_pred, target_names=["No Disease", "Heart Disease"])
     print("\nClassification Report:\n", class_report)
     
     # 5. Save Text Report
     report_path = os.path.join(REPORTS_DIR, "evaluation_report.txt")
     with open(report_path, "w") as f:
         f.write("==================================================\n")
-        f.write("DIABETES RISK PREDICTION - MLP EVALUATION REPORT\n")
+        f.write("CARDIAC RISK STRATIFICATION - MLP EVALUATION REPORT\n")
         f.write("==================================================\n\n")
         f.write(f"Accuracy:    {accuracy:.4f}\n")
         f.write(f"Precision:   {precision:.4f}\n")
@@ -95,8 +95,8 @@ def evaluate_model(model_path=MODEL_PATH, test_data=None):
     plt.figure(figsize=(6, 5))
     cm = confusion_matrix(y_test, y_pred)
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                xticklabels=["Non-Diabetic", "Diabetic"],
-                yticklabels=["Non-Diabetic", "Diabetic"])
+                xticklabels=["No Disease", "Heart Disease"],
+                yticklabels=["No Disease", "Heart Disease"])
     plt.title('Confusion Matrix', fontsize=12, fontweight='bold', pad=10)
     plt.ylabel('Actual Label')
     plt.xlabel('Predicted Label')
