@@ -1,0 +1,26 @@
+==================================================
+CARDIAC RISK STRATIFICATION - MLP EVALUATION REPORT
+==================================================
+
+Accuracy:    0.9545
+Precision:   0.9737
+Recall:      0.9367 (Sensitivity)
+Specificity: 0.9733
+F1-Score:    0.9548
+AUC-ROC:     0.9887
+
+Confusion Matrix counts:
+ - True Negatives (TN):  73
+ - False Positives (FP): 2
+ - False Negatives (FN): 5
+ - True Positives (TP):  74
+
+Classification Report Details:
+               precision    recall  f1-score   support
+
+   No Disease       0.94      0.97      0.95        75
+Heart Disease       0.97      0.94      0.95        79
+
+     accuracy                           0.95       154
+    macro avg       0.95      0.96      0.95       154
+ weighted avg       0.96      0.95      0.95       154
